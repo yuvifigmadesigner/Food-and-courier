@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import FeatureHeader from './FeatureHeader';
 import FeatureCard from './FeatureCard';
 import LocationDemo from '../assets/LocationStrategyDemo.mp4';
@@ -14,6 +14,37 @@ import Help2 from '../assets/help2.png';
 import Review1 from '../assets/SendMe - Deliveries.png';
 import Review2 from '../assets/SendMe - Deliveries2.png';
 import Review3 from '../assets/SendMe - Deliveries3.png';
+
+const LazyVideo = ({ src }) => {
+    const containerRef = useRef(null);
+    const isInView = useInView(containerRef, { margin: "200px 0px" }); // Preload when 200px away
+    const [hasLoaded, setHasLoaded] = useState(false);
+
+    useEffect(() => {
+        if (isInView && !hasLoaded) {
+            setHasLoaded(true);
+        }
+    }, [isInView, hasLoaded]);
+
+    return (
+        <div ref={containerRef} style={{ height: '100%', width: '100%', overflow: 'hidden', backgroundColor: '#f0f0f0' }}>
+            {hasLoaded ? (
+                <video
+                    src={src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+            ) : (
+                <div style={{ width: '100%', height: '100%', backgroundColor: '#e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
+                    Loading...
+                </div>
+            )}
+        </div>
+    );
+};
 
 const Card = ({ children, i, progress, range, targetScale, targetRotate = 0 }) => {
     const container = useRef(null);
@@ -107,6 +138,7 @@ const FeatureSection = () => {
                                                 src={Review3}
                                                 alt="User Review 3"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -120,6 +152,7 @@ const FeatureSection = () => {
                                                 src={Review2}
                                                 alt="User Review 2"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -134,6 +167,7 @@ const FeatureSection = () => {
                                                 src={Review1}
                                                 alt="User Review 1"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -153,14 +187,7 @@ const FeatureSection = () => {
                             /* --- Phone Screen Content (Location Demo Video) --- */
                             phoneScreenContent={
                                 <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
-                                    <video
-                                        src={LocationDemo}
-                                        autoPlay
-                                        loop
-                                        muted
-                                        playsInline
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
+                                    <LazyVideo src={LocationDemo} />
                                 </div>
                             }
                         />
@@ -208,6 +235,7 @@ const FeatureSection = () => {
                                                 src={Help2}
                                                 alt="Help Screen 2"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -221,6 +249,7 @@ const FeatureSection = () => {
                                                 src={Help1}
                                                 alt="Help Screen 1"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -240,14 +269,7 @@ const FeatureSection = () => {
                             /* --- Phone Screen Content (Help Video) --- */
                             phoneScreenContent={
                                 <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
-                                    <video
-                                        src={HelpVideo}
-                                        autoPlay
-                                        loop
-                                        muted
-                                        playsInline
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
+                                    <LazyVideo src={HelpVideo} />
                                 </div>
                             }
                         />
@@ -299,6 +321,7 @@ const FeatureSection = () => {
                                                 src={Card3}
                                                 alt="Pricing Card 3"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -312,6 +335,7 @@ const FeatureSection = () => {
                                                 src={Card32}
                                                 alt="Pricing Card 32"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -326,6 +350,7 @@ const FeatureSection = () => {
                                                 src={Card33}
                                                 alt="Pricing Card 33"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -340,6 +365,7 @@ const FeatureSection = () => {
                                                 src={Card34}
                                                 alt="Pricing Card 34"
                                                 className="review-sticker"
+                                                loading="lazy"
                                                 style={{
                                                     width: '240px',
                                                     borderRadius: '12px',
@@ -359,14 +385,7 @@ const FeatureSection = () => {
                             /* --- Phone Screen Content (Delivery Demo Video) --- */
                             phoneScreenContent={
                                 <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
-                                    <video
-                                        src={DeliveryVideo}
-                                        autoPlay
-                                        loop
-                                        muted
-                                        playsInline
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                    />
+                                    <LazyVideo src={DeliveryVideo} />
                                 </div>
                             }
                         />

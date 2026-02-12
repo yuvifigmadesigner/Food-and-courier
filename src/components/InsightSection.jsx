@@ -179,6 +179,7 @@ const PaperCard = ({ data, isFlipped }) => {
                                     <img
                                         src={increaseIcon}
                                         alt=""
+                                        loading="lazy"
                                         style={{ width: '40px', height: '40px', objectFit: 'contain', opacity: 0.8 }}
                                     />
                                 ) : data.id === 'identity' ? (
@@ -368,7 +369,7 @@ const InsightSection = () => {
                 pointerEvents: 'none',
                 transform: 'rotate(-70deg)'
             }}>
-                <img src={ribbonSvg} alt="" style={{ width: '100%', height: 'auto' }} />
+                <img src={ribbonSvg} alt="" loading="lazy" style={{ width: '100%', height: 'auto' }} />
             </div>
 
             <div style={{ maxWidth: '1440px', margin: '0 auto', position: 'relative', zIndex: 1 }}>

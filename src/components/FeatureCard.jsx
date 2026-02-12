@@ -71,7 +71,7 @@ const FeatureCard = ({ backgroundColor, icon, title, subtitle, description, tags
                 marginTop: '-3rem', // Pull up slightly into the padding
                 marginRight: '-3rem' // Push to edge
             }}>
-                <img src={iPhoneBezel} alt="Phone Mockup" style={{
+                <img src={iPhoneBezel} alt="Phone Mockup" loading="lazy" style={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
@@ -102,6 +102,7 @@ const FeatureCard = ({ backgroundColor, icon, title, subtitle, description, tags
                             src={Ribbon}
                             alt=""
                             className="ribbon-appear"
+                            loading="lazy"
                             style={{
                                 width: '100%',
                                 height: '100%',
