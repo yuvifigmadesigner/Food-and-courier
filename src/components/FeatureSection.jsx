@@ -2,9 +2,9 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import FeatureHeader from './FeatureHeader';
 import FeatureCard from './FeatureCard';
-import LocationDemo from '../assets/LocationStrategyDemo.mp4';
-import HelpVideo from '../assets/help.mp4';
-import DeliveryVideo from '../assets/delivery.mp4';
+import LocationDemo from '../assets/LocationStrategyDemo.html?url';
+import HelpDemo from '../assets/help.html?url';
+import DeliveryDemo from '../assets/delivery.html?url';
 import Card3 from '../assets/card 3.png';
 import Card32 from '../assets/card 32.png';
 import Card33 from '../assets/card 33.png';
@@ -187,7 +187,12 @@ const FeatureSection = () => {
                             /* --- Phone Screen Content (Location Demo Video) --- */
                             phoneScreenContent={
                                 <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
-                                    <LazyVideo src={LocationDemo} />
+                                    <iframe
+                                        src={LocationDemo}
+                                        style={{ width: '100%', height: '100%', border: 'none', overflow: 'hidden' }}
+                                        title="Location Strategy Demo"
+                                        scrolling="no"
+                                    />
                                 </div>
                             }
                         />
@@ -269,7 +274,12 @@ const FeatureSection = () => {
                             /* --- Phone Screen Content (Help Video) --- */
                             phoneScreenContent={
                                 <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
-                                    <LazyVideo src={HelpVideo} />
+                                    <iframe
+                                        src={HelpDemo}
+                                        style={{ width: '100%', height: '100%', border: 'none', overflow: 'hidden' }}
+                                        title="Help Support Demo"
+                                        scrolling="no"
+                                    />
                                 </div>
                             }
                         />
@@ -385,7 +395,12 @@ const FeatureSection = () => {
                             /* --- Phone Screen Content (Delivery Demo Video) --- */
                             phoneScreenContent={
                                 <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
-                                    <LazyVideo src={DeliveryVideo} />
+                                    <iframe
+                                        src={DeliveryDemo}
+                                        style={{ width: '100%', height: '100%', border: 'none', overflow: 'hidden' }}
+                                        title="Delivery Demo"
+                                        scrolling="no"
+                                    />
                                 </div>
                             }
                         />

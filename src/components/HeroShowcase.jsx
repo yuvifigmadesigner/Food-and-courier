@@ -2,7 +2,7 @@ import React from 'react';
 import iPhoneBezel from '../assets/iPhone16Plus.svg';
 import OrderInfoCard from '../assets/Order Info card.svg';
 import CardRight from '../assets/Frame 148.svg';
-import HomeScreen from '../assets/HOME.svg';
+import HomeScreen from '../assets/HOME.png';
 import Ribbon from '../assets/ribbon.svg';
 
 const PhoneMockup = () => (
@@ -47,7 +47,8 @@ const PhoneMockup = () => (
             <img src={HomeScreen} alt="Home Screen" style={{
                 width: '100%',
                 height: 'auto',
-                display: 'block'
+                display: 'block',
+                objectFit: 'cover'
             }} />
         </div>
     </div>
